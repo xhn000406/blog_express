@@ -1,0 +1,17 @@
+{
+  "name": "blog_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js --watch --env blog_express"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
