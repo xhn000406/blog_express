@@ -10,7 +10,7 @@ const { searchUsername } = require('../services/authServices')
 
 class verityAuth {
   async verityAccount(req, res, next) {
-    const { username, password } = req.body
+    const { username, password, id } = req.body
 
     const result = await searchUsername(username)
     req.user = result[0]

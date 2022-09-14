@@ -5,7 +5,8 @@ module.exports = {
       watch: ['./index.js'],
       env: {
         NODE_ENV: 'development',
-        PORT: 9090
+        PORT: 9090,
+        URL: 'localhost:9090/'
       },
       env_production: {
         NODE_ENV: 'production'

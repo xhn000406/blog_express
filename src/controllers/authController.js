@@ -1,5 +1,4 @@
-const { createToken } = require('../middlewares/auth')
-const { register, login } = require('../services/authServices')
+const { register } = require('../services/authServices')
 const { md5Password } = require('../utils/password-handle')
 
 class authController {
@@ -13,13 +12,12 @@ class authController {
   }
 
   loginAuth = async (req, res) => {
-    const { username } = req.user
+    const { username, id } = req.user
     const token = req.token
     res.send({
-      data: {
-        username,
-        token
-      }
+      id,
+      username,
+      token
     })
   }
 }
