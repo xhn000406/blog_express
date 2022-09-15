@@ -11,8 +11,14 @@ class userController {
 
   async updateUserInfo(req, res) {
     const { id } = req.params
-    const { nicekName } = req.body
-    const result = await userServices.updateUserInfo(nicekName, id)
+    const { nickName, hotMail, fileName, introduction } = req.body
+    const result = await userServices.updateUserInfo(
+      nickName,
+      hotMail,
+      fileName,
+      introduction,
+      id
+    )
     res.send({
       result
     })

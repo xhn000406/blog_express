@@ -40,7 +40,6 @@ class verityAuth {
   verityToken(req, res, next) {
     const authorization = req.headers.authorization
     const token = authorization.replace('Bearer ', '')
-
     const demo = jwt.verify(token, publicKey, {
       algorithms: ['RS256']
     })

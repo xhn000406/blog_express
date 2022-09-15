@@ -17,20 +17,10 @@ const storage = multer.diskStorage({
   }
 })
 const upload = multer({ storage: storage })
-uploadRouter.post('/profile', upload.single('avatar'), (req, res, next) => {
-  console.log(req.file)
-})
 
-uploadRouter.post(
-  '/userAvatar/:id',
-  upload.single('avatar'),
-  async (req, res, next) => {
-    console.log(req.params)
-    const id = req.params.id
-    let fileName = URL + req.file.filename
-    const result = await userServices.upDataUserAvatar(fileName, id)
-    res.send(result)
-  }
-)
+uploadRouter.post('/profile', upload.single('avatar'), (req, res, next) => {
+  let fileName = URL + req.file.filename
+  res.send({ fileName })
+})
 
 module.exports = uploadRouter
