@@ -7,7 +7,6 @@ class dictController {
       offset = req.query.offset
       console.log(req.query)
     }
-
     const result = await dictServices.getData(offset)
     res.send(result)
   }
