@@ -1,3 +1,4 @@
+const { deleteData } = require('../controllers/editController')
 const connection = require('../utils/database/index')
 
 class editServices {

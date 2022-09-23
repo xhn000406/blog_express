@@ -9,6 +9,18 @@ class articleServices {
     const result = await connection.query(statment, [iid, reoffset])
     return result[0]
   }
+
+  async deleteData(id) {
+    const statement = 'DELETE from t_edit where id = ?'
+    const result = await connection.query(statement, [id])
+    return result[0]
+  }
+
+  async issueData(send, id) {
+    const statement = 'UPDATE t_edit SET send = ? WHERE id = ?'
+    const result = await connection.query(statement, [send, id])
+    return result[0]
+  }
 }
 
 module.exports = new articleServices()
