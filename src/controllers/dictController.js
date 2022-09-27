@@ -1,14 +1,20 @@
 const dictServices = require('../services/dictServices')
+const { resultCount } = require('../utils/hooks')
 
 class dictController {
   async getData(req, res) {
     let offset = 0
-    if (req.query.offset != 'undefined') {
+    if (req.query.offset == 'undefined') {
       offset = req.query.offset
-      console.log(req.query)
     }
+    console.log(offset)
     const result = await dictServices.getData(offset)
-    res.send(result)
+    const count = resultCount(result)
+
+    res.send({
+      result,
+      count
+    })
   }
   async addData(req, res) {
     const { dict_type, dict_name } = req.body

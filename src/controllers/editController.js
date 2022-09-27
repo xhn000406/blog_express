@@ -2,12 +2,13 @@ const editServices = require('../services/editServices')
 
 class editController {
   async addData(req, res) {
-    const { title, valueHtml, imgUrl, articleType } = req.body
+    const { title, valueHtml, imgUrl, articleType, isSwaper } = req.body
     const result = await editServices.addData(
       title,
       valueHtml,
       imgUrl,
-      articleType
+      articleType,
+      isSwaper
     )
     res.send(result)
   }
@@ -18,12 +19,13 @@ class editController {
   }
   async updateData(req, res) {
     const { id } = req.params
-    const { title, valueHtml, imgUrl, articleType } = req.body
+    const { title, valueHtml, imgUrl, articleType, isSwaper } = req.body
     const result = await editServices.updateData(
       title,
       valueHtml,
       imgUrl,
       articleType,
+      isSwaper,
       id
     )
     res.send(result)

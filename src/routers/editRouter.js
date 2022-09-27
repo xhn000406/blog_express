@@ -9,8 +9,8 @@ const {
 const { verityToken } = require('../middlewares/auth')
 
 //增删改查
-editRouter.post('/edit', verityToken, addData)
-editRouter.get('/edit/:id', verityToken, getData)
+editRouter.post('/edit', addData)
+editRouter.get('/edit/:id', getData)
 editRouter.post('/edit/:id', verityToken, updateData)
 
 module.exports = editRouter

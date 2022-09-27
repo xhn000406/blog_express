@@ -4,9 +4,8 @@ class artilceController {
   async getdata(req, res) {
     let offset = 0
     let id = req.query.id
-    if (req.query.offset != 'undefined') {
+    if (req.query.offset == 'undefined') {
       offset = req.query.offset
-      console.log(req.query)
     }
     const result = await articleServices.getData(id, offset)
     res.send(result)
@@ -20,8 +19,12 @@ class artilceController {
 
   async sendData(req, res) {
     const { id } = req.params
-    const { send } = req.body
-    const result = await articleServices.issueData(id, send)
+    let send = 1
+    const result = await articleServices.issueData(send, id)
+    res.send(result)
+  }
+  async getSwiperData(req, res) {
+    const result = await articleServices.getSwiperData()
     res.send(result)
   }
 }

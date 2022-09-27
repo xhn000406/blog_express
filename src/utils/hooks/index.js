@@ -12,6 +12,15 @@ const autoRouter = function (url) {
   })
 }
 
+const resultCount = function (arr) {
+  let count = 0
+  arr.forEach((item) => {
+    count++
+  })
+  return count
+}
+
 module.exports = {
-  autoRouter
+  autoRouter,
+  resultCount
 }

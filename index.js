@@ -7,6 +7,7 @@ const uploadRouter = require('./src/routers/uploadRouter')
 const editRouter = require('./src/routers/editRouter')
 const dictRouter = require('./src/routers/dictRouter')
 const articleRouter = require('./src/routers/articleRouter')
+const recordRouter = require('./src/routers/recordRouter')
 
 const express = require('express')
 const app = express()
@@ -20,6 +21,7 @@ app.use(articleRouter)
 app.use(uploadRouter)
 app.use(dictRouter)
 app.use(editRouter)
+app.use(recordRouter)
 app.use(express())
 
 app.listen(PORT, () => {

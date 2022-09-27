@@ -5,7 +5,7 @@ class articleServices {
     const reoffset = parseInt(offset)
     const iid = parseInt(id)
     console.log(iid)
-    const statment = `SELECT * FROM t_edit WHERE articleType = ? LIMIT 10 OFFSET ?`
+    const statment = `SELECT * FROM t_edit WHERE articleType = ? LIMIT 10`
     const result = await connection.query(statment, [iid, reoffset])
     return result[0]
   }
@@ -17,8 +17,16 @@ class articleServices {
   }
 
   async issueData(send, id) {
-    const statement = 'UPDATE t_edit SET send = ? WHERE id = ?'
+    console.log(send)
+    const statement =
+      'UPDATE t_edit SET send = ?,author="小徐同学" WHERE id = ?'
     const result = await connection.query(statement, [send, id])
+    return result[0]
+  }
+
+  async getSwiperData() {
+    const statement = 'SELECT * FROM t_edit where isSwaper = 1'
+    const result = await connection.query(statement)
     return result[0]
   }
 }

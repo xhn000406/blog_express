@@ -3,13 +3,13 @@ const connection = require('../utils/database/index')
 
 class editServices {
   async addData(title, valueHtml, imgUrl, articleType) {
-    console.log(articleType)
-    const statement = `INSERT INTO t_edit(title,valueHtml,imgUrl,articleType,send) VALUES (?,?,?,?,0)`
+    const statement = `INSERT INTO t_edit(title,valueHtml,imgUrl,articleType,send,isSwaper) VALUES (?,?,?,?,0)`
     const result = await connection.query(statement, [
       title,
       valueHtml,
       imgUrl,
-      articleType
+      articleType,
+      isSwaper
     ])
     return result[0]
   }
@@ -18,13 +18,14 @@ class editServices {
     const result = await connection.query(statement, [id])
     return result[0]
   }
-  async updateData(title, valueHtml, imgUrl, articleType, id) {
-    const statement = `UPDATE t_edit SET title =? ,valueHtml =?,imgUrl =?,articleType =?,send =0  where id = ?`
+  async updateData(title, valueHtml, imgUrl, articleType, isSwaper, id) {
+    const statement = `UPDATE t_edit SET title =? ,valueHtml =?,imgUrl =?,articleType =?,send =0,isSwaper=? where id = ?`
     const result = await connection.query(statement, [
       title,
       valueHtml,
       imgUrl,
       articleType,
+      isSwaper,
       id
     ])
     return result[0]

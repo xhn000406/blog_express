@@ -3,7 +3,7 @@ const connection = require('../utils/database/index')
 class dictServices {
   async getData(offset) {
     const reoffset = parseInt(offset)
-    const statment = `SELECT * FROM t_dict LIMIT 10 OFFSET ?`
+    const statment = `SELECT * FROM t_dict`
     const result = await connection.query(statment, [reoffset])
     return result[0]
   }

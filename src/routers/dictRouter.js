@@ -12,7 +12,7 @@ const { verityToken } = require('../middlewares/auth')
 dictRouter.post('/dict', verityToken, addData)
 dictRouter.delete('/dict/:id', verityToken, delData)
 dictRouter.post('/dict/:id', verityToken, updateData)
-dictRouter.get('/dict', verityToken, getData)
+dictRouter.get('/dict', getData)
 
 // 暂时未做
 dictRouter.get('/dict/:id', verityToken)
