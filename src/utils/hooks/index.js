@@ -1,4 +1,5 @@
 const fs = require('fs')
+const homeServices = require('../../services/homeServices')
 
 // 自动导入‘待完善’
 const autoRouter = function (url) {
@@ -20,7 +21,13 @@ const resultCount = function (arr) {
   return count
 }
 
+const setTimeClear = function async() {
+  setInterval(async () => {
+    await homeServices.clearVisitedData()
+  }, 1000 * 60 * 60 * 24 * 7)
+}
 module.exports = {
   autoRouter,
-  resultCount
+  resultCount,
+  setTimeClear
 }
