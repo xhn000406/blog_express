@@ -4,29 +4,24 @@ class homeServices {
   async getData(req, res) {
     let obj = {}
 
-    const detailCount = await connection.query(
-      'select count(*) as detailCount  from t_details'
-    )
-
     const recordCount = await connection.query(
-      `select count(*) as recordCount from t_record`
+      `select count(*) as 评论数 from t_record`
     )
     const editCount = await connection.query(
-      'select count(*) as editCount  from t_edit'
+      'select count(*) as 文章数 from t_edit'
     )
 
     const dictCount = await connection.query(`
-    select count(*) as dictCount  from t_dict
+    select count(*) as 类型数  from t_dict
     `)
 
     const userCount = await connection.query(
-      'select count(*) as userCount  from t_user'
+      'select count(*) as 用户数  from t_user'
     )
     obj = Object.assign(
       {},
       recordCount[0][0],
       editCount[0][0],
-      detailCount[0][0],
       dictCount[0][0],
       userCount[0][0]
     )

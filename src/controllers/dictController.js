@@ -7,7 +7,6 @@ class dictController {
     if (req.query.offset == 'undefined') {
       offset = req.query.offset
     }
-    console.log(offset)
     const result = await dictServices.getData(offset)
     const count = resultCount(result)
 

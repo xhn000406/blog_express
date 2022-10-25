@@ -2,6 +2,7 @@ const homeServices = require('../services/homeServices')
 
 class homeController {
   async getDetailsDeta(req, res) {
+    console.log(req)
     const result = await homeServices.getData()
     res.send(result)
   }

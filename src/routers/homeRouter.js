@@ -12,3 +12,4 @@ homeRouter.get('/getVisitedData', getVistedData)
 homeRouter.post('/addVisitedData', addVisitedData)
 
 module.exports = homeRouter
+  

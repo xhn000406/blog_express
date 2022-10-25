@@ -19,6 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 uploadRouter.post('/profile', upload.single('avatar'), (req, res, next) => {
+  console.log(req.file)
   let fileName = URL + req.file.filename
   res.send({ fileName })
 })

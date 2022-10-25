@@ -1,9 +1,11 @@
+const homeServices = require('../services/homeServices')
 const userServices = require('../services/userServices')
 
 class userController {
   async getUserInfo(req, res) {
     const { id } = req.params
     const result = await userServices.getUserInfo(id)
+    homeServices.addVisitedData()
     res.send({
       result
     })

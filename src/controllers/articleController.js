@@ -1,14 +1,15 @@
 const articleServices = require('../services/articleServices')
+const { resultCount } = require('../utils/hooks')
 
 class artilceController {
   async getdata(req, res) {
-    let offset = 0
-    let id = req.query.id
-    if (req.query.offset == 'undefined') {
-      offset = req.query.offset
-    }
-    const result = await articleServices.getData(id, offset)
-    res.send(result)
+    const { page, id } = req.query
+    const [result, count] = await articleServices.getData(id, page)
+    console.log(result)
+    res.send({
+      result,
+      count
+    })
   }
 
   async deleteData(req, res) {

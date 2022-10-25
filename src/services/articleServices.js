@@ -1,13 +1,17 @@
 const connection = require('../utils/database/index')
+const { resultCount } = require('../utils/hooks')
 
 class articleServices {
-  async getData(id, offset) {
-    const reoffset = parseInt(offset)
+  async getData(id, page) {
+    if (page == 'undefined') {
+      page = 0
+    }
     const iid = parseInt(id)
-    console.log(iid)
-    const statment = `SELECT * FROM t_edit WHERE articleType = ? LIMIT 10`
-    const result = await connection.query(statment, [iid, reoffset])
-    return result[0]
+    const statment = `SELECT * FROM t_edit WHERE articleType = ? LIMIT 10 OFFSET ?`
+    const count = await connection.query('SELECT * FROM t_edit')
+    const reCount = resultCount(count[0])
+    const result = await connection.query(statment, [iid, parseInt(page)])
+    return [result[0], reCount]
   }
 
   async deleteData(id) {

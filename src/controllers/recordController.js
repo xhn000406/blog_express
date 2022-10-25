@@ -3,7 +3,8 @@ const { resultCount } = require('../utils/hooks')
 
 class recordController {
   async getData(req, res) {
-    const result = await recordServices.getData()
+    const { page } = req.query
+    const result = await recordServices.getData(page)
     const count = resultCount(result)
     res.send({
       result,
